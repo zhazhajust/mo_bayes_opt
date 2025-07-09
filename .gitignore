@@ -91,8 +91,8 @@ ENV/
 *.jpg
 *.jpeg
 
-# Notebooks (optional)
-*.ipynb
+# # Notebooks (optional)
+# *.ipynb
 
 # Models
 # models/
