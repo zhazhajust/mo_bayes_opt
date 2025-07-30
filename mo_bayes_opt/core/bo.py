@@ -27,7 +27,7 @@ class MultiObjectiveBO:
         self.save_models = save_models
         self.initial_data = initial_data
 
-    def run(self, num_repeats=3, num_queries=20, log_path="log.csv"):
+    def run(self, num_repeats=3, num_queries=20, log_path=None, **kwargs):
         self.logger = BOLogger(ref_point=self.ref_point, save_models=self.save_models, save_path=log_path)
 
         for trial in range(num_repeats):
@@ -48,7 +48,7 @@ class MultiObjectiveBO:
                 models, _ = train_gp_models(
                     train_x, train_y, use_adaptive_noise=self.use_adaptive_noise, num_iters=self.num_iters
                 )
-                next_x = optimize_step(train_x, train_y, models, self.ref_point, self.bounds, self.strategy)
+                next_x = optimize_step(train_x, train_y, models, self.ref_point, self.bounds, self.strategy, **kwargs)
                 next_y = self.objective_fn(next_x)
 
                 train_x = torch.cat([train_x, next_x])

@@ -84,6 +84,7 @@ ENV/
 *.pt
 *.pkl
 *.ckpt
+*.hdf5
 
 # Outputs
 *.pdf
